@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../services/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import { getUserById, updateUser } from "../../routes/authRoutes";
 import useValidation from "../../services/Validation";
 import UpdateUserForm from "../../components/profile/UpdateUserForm";
@@ -9,7 +9,7 @@ const UpdateUserPage = () => {
   const { userId: authUserId } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
-  
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",

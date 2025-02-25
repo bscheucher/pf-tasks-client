@@ -1,28 +1,26 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../services/AuthContext";
+import React, { useContext } from "react";
+
+import { AuthContext } from "../../context/AuthContext";
 
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import "./navfoot.css";
 
 function NavBar() {
-  const navigate = useNavigate();
-  const { isLoggedIn, logout, isAdmin } = useContext(AuthContext);
-
-  const [message, setMessage] = useState("");
+  const { isLoggedIn, logout } = useContext(AuthContext);
 
   return (
     <Navbar bg="light" expand="lg" className="shadow-sm">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          My Task Manager
+          My Kanban App
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           {/* Left Nav Links */}
           <Nav className="me-auto d-flex align-items-center gap-3">
             <Nav.Link as={Link} to="/" className="mx-2">
-              Home
+              My Kanban Boards
             </Nav.Link>
             {isLoggedIn && (
               <Nav.Link as={Link} to="/user" className="mx-2">

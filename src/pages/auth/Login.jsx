@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../routes/authRoutes";
-import { AuthContext } from "../../services/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import LoginForm from "../../components/auth/LoginForm";
 
 function Login() {
@@ -26,6 +26,10 @@ function Login() {
       setSuccessMessage(response.data.message);
       localStorage.setItem("token", response.data.token);
       setIsLoggedIn(true);
+      console.log(
+        "Token in local storage, logged in Login.jsx",
+        localStorage.getItem("token")
+      );
       navigate("/");
     } catch (err) {
       setError(
@@ -36,7 +40,7 @@ function Login() {
 
   return (
     <div className="container mt-5">
-      <h2>Login</h2>
+      <h2>Log in and get started!</h2>
       <LoginForm
         credentials={credentials}
         onChange={handleChange}

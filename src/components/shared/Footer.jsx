@@ -1,8 +1,9 @@
 import React from "react";
+import "./navfoot.css";
 
 function Footer() {
   return (
-    <footer className="bg-light text-center py-3">
+    <footer className="text-center py-3 foot">
       <p>&copy; {new Date().getFullYear()} Bernhard Scheucher</p>
     </footer>
   );

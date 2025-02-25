@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import { AuthContext } from "../../services/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import { getUserById } from "../../routes/authRoutes";
 import UserCard from "../../components/profile/UserCard";
-import LoadingIndicator from "../../components/shared/LoadingIndicator";
+import LoadingIndicator from "../../components/loading/LoadingIndicator";
 
 function UserProfile() {
-  const { isLoggedIn, userId } = useContext(AuthContext); 
+  const { isLoggedIn, userId } = useContext(AuthContext);
+  console.log("userId in userProfile", userId);
   const [user, setUser] = useState(null);
   const [isLoadingUser, setIsLoadingUser] = useState(false);
 
@@ -14,6 +15,7 @@ function UserProfile() {
       setIsLoadingUser(true);
       try {
         const { data } = await getUserById(userId);
+        console.log("User Data in UserProfile", data);
         setUser(data);
       } catch (error) {
         console.error("Error fetching User:", error.message);
