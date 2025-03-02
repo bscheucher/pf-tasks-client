@@ -12,16 +12,22 @@ function NavBar() {
   return (
     <Navbar bg="light" expand="lg" className="shadow-sm">
       <Container>
-        <Navbar.Brand as={Link} to="/">
-          My Kanban App
-        </Navbar.Brand>
+        {isLoggedIn && (
+          <Navbar.Brand as={Link} to="/">
+            My Kanban App
+          </Navbar.Brand>
+        )}
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           {/* Left Nav Links */}
           <Nav className="me-auto d-flex align-items-center gap-3">
-            <Nav.Link as={Link} to="/" className="mx-2">
-              My Kanban Boards
-            </Nav.Link>
+            {isLoggedIn && (
+              <Nav.Link as={Link} to="/" className="mx-2">
+                My Kanban Boards
+              </Nav.Link>
+            )}
+
             {isLoggedIn && (
               <Nav.Link as={Link} to="/user" className="mx-2">
                 User
